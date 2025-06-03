@@ -14,4 +14,4 @@ jobs:
         uses: ./.github/actions/setup-clojure
 
       - name: Run tests
-        run: lein test --reporter kaocha.report.github-annotation/reporter
+        run: lein test --reporter annotation.report/reporter
