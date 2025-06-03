@@ -5,4 +5,4 @@
 (deftest relative-test
   (testing "Path relative to project root"
     (let [file "annotation/report.clj"]
-      (is (= "src/annotation/report.clj" (str (path/relative file)))))))
+      (is (= "src/annotation/report.clj" (path/relative file))))))
