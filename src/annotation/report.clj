@@ -10,7 +10,7 @@
 (defn location
   [{:keys [file line] :kaocha/keys [testable]}]
   (let [file (or (some-> testable ::testable/meta :file) file)
-        line (or (some-> testable ::testable/meta :line) line)
+        line (or line (some-> testable ::testable/meta :line))
         col (or (some-> testable ::testable/meta :line) 1)]
     (str "file=" (path/relative file) ",line=" line ",row=" col)))
 
