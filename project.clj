@@ -1,11 +1,11 @@
-(defproject jp.studist/annotation-reporter "0.2.0-alpha1"
+(defproject jp.studist/annotation-reporter "0.2.0-alpha2"
   :description "GitHub annotation test reporter for Kaocha"
   :url "https://github.com/StudistCorporation/annotation-reporter"
   :license {:name "MIT"
             :url "https://opensource.org/license/mit/"}
   :dependencies []
   :scm {:name "git"
-        :tag "v0.2.0-alpha1"}
+        :tag "v0.2.0-alpha2"}
   :deploy-repositories {"clojars" {:url "https://repo.clojars.org/"
                                    :username :env/clojars_user
                                    :password :env/clojars_token}}
