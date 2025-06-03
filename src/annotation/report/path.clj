@@ -1,5 +1,6 @@
 (ns annotation.report.path
-  (:require [clojure.java.io :as io])
+  (:require [clojure.java.io :as io]
+            [clojure.string :as str])
   (:import [java.nio.file
             Path]))
 
@@ -9,7 +10,11 @@
     (let [command ^String/1 (into-array String ["git" "rev-parse" "--show-toplevel"])
           process (.exec (Runtime/getRuntime) command)]
       (.waitFor process)
-      (slurp (.getInputStream process)))
+      (-> (.getInputStream process)
+          slurp
+          str/trim
+          io/file
+          .toPath))
     (catch Throwable _)))
 
 (defn process-root
