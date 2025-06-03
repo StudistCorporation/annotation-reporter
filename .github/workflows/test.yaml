@@ -1,0 +1,17 @@
+name: Test
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup clojure
+        uses: ./.github/actions/setup-clojure
+
+      - name: Run tests
+        run: lein test --reporter kaocha.report.github-annotation/reporter

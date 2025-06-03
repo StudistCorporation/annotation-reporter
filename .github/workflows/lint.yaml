@@ -1,0 +1,17 @@
+name: Lint
+
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup clojure
+        uses: ./.github/actions/setup-clojure
+
+      - name: Run lint
+        run: lein lint

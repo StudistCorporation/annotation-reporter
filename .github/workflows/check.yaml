@@ -1,0 +1,22 @@
+name: Warnings
+
+on: push
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup clojure
+        uses: ./.github/actions/setup-clojure
+
+      - name: Reflection warning check
+        run: |
+          result=$(lein with-profile +check check >/dev/null 2> >(grep --line-buffered -P '(Reflection|Boxed math) warning, mukudori'))
+          if [[ $result ]]; then
+            echo "$result" | sed -E 's/(Boxed math|Reflection) warning, (.+):([0-9]+):([0-9]+) - (.+)/::warning file=src\/\2,line=\3,col=\4::\1: \5/g'
+            exit 1
+          fi
