@@ -11,7 +11,7 @@
                                    :password :env/clojars_token}}
   :profiles
   {:dev {:dependencies [[clj-kondo "2025.04.07"]
-                        [org.clojure/clojure "1.12.0"]
+                        [org.clojure/clojure "1.12.1"]
                         [lambdaisland/kaocha "1.91.1392"]]
          :plugins [[lein-ancient "0.7.0"]]
          :aliases {"lint" ["run" "-m" "clj-kondo.main"
