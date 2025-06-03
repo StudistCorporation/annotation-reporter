@@ -1,0 +1,24 @@
+name: Release automation
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  clojars:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Setup clojure
+        uses: ./.github/actions/setup-clojure
+
+      - run: lein deploy clojars
+        env:
+          CLOJARS_USER: valerauko
+          CLOJARS_TOKEN: ${{ secrets.CLOJARS_TOKEN }}
