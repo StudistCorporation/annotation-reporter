@@ -1,5 +1,7 @@
 # GitHub annotation test reporter for Kaocha
 
+[![Test](https://github.com/StudistCorporation/annotation-reporter/actions/workflows/test.yaml/badge.svg)](https://github.com/StudistCorporation/annotation-reporter/actions/workflows/test.yaml) [![Clojars Project](https://img.shields.io/clojars/v/jp.studist/annotation-reporter.svg)](https://clojars.org/jp.studist/annotation-reporter)
+
 A Kaocha test reporter that outputs test failures in the format for use with GitHub annotations.
 
 Use this reporter to have test failures show up automatically in GitHub pull requests as code annotations.
