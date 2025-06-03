@@ -18,7 +18,7 @@ Available on Clojars.
 [jp.studist/annotation-reporter "0.2.0"]
 ```
 ```clj
-{jp.studist/annotation-reporter {:mvn/version "0.2.0}}
+{jp.studist/annotation-reporter {:mvn/version "0.2.0"}}
 ```
 
 ## Usage
