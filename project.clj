@@ -17,4 +17,7 @@
          :aliases {"lint" ["run" "-m" "clj-kondo.main"
                            "--config" ".clj-kondo/config.edn"
                            "--lint" "src" "test"]
-                   "test" ["run" "-m" "kaocha.runner"]}}})
+                   "test" ["run" "-m" "kaocha.runner"]}}
+   :repl {:dependencies [[org.clojure/tools.namespace "1.5.0"
+                          :exclusions [org.clojure/clojure]]]
+          :source-paths ["dev"]}})
