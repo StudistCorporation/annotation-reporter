@@ -1,29 +1,18 @@
-(ns kaocha.report.github-annotation
-  (:require [clojure.java.io :as io]
+(ns annotation.report
+  (:require [annotation.report.path :as path]
             [clojure.string :as str]
             [clojure.test :refer [with-test-out]]
             [kaocha.hierarchy :as hierarchy]
             [kaocha.output :refer [*colored-output*]]
             [kaocha.report :as report]
-            [kaocha.testable :as testable])
-  (:import [java.nio.file
-            Path]))
-
-(defn full-path
-  [file]
-  (let [root (Path/of (System/getProperty "user.dir") ^String/1 (into-array String []))]
-    (->> file
-         io/resource
-         io/file
-         .toPath
-         (.relativize root))))
+            [kaocha.testable :as testable]))
 
 (defn location
   [{:keys [file line] :kaocha/keys [testable]}]
   (let [file (or (some-> testable ::testable/meta :file) file)
         line (or (some-> testable ::testable/meta :line) line)
         col (or (some-> testable ::testable/meta :line) 1)]
-    (str "file=" (full-path file) ",line=" line ",row=" col)))
+    (str "file=" (path/relative file) ",line=" line ",row=" col)))
 
 (defmulti annotate :type :hierarchy #'hierarchy/hierarchy)
 
