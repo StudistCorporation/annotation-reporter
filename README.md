@@ -4,6 +4,8 @@ A Kaocha test reporter that outputs test failures in the format for use with Git
 
 Use this reporter to have test failures show up automatically in GitHub pull requests as code annotations.
 
+![image](https://github.com/user-attachments/assets/5b843a05-8d2d-42c6-b185-875436360ae2)
+
 It assumes that tests are run in GitHub Actions.
 
 ## Installation
