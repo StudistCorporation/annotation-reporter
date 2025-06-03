@@ -1,0 +1,27 @@
+name: Setup clojure
+description: Install Clojure with cache
+
+runs:
+  using: composite
+  steps:
+    # ubuntu-latestに理論上21が入っているのに
+    # JAVA_HOMEどういじっても使われないのでsetup-javaする
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+
+    - name: Install clojure tools
+      uses: DeLaGuardo/setup-clojure@13.2
+      with:
+        lein: 2.11.2
+
+    - name: Cache clojure dependencies
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.m2/repository
+          ~/.gitlibs
+        key: lein-${{ hashFiles('project.clj') }}
+        restore-keys: lein-
