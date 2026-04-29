@@ -9,12 +9,12 @@
   (try
     (let [command ^String/1 (into-array String ["git" "rev-parse" "--show-toplevel"])
           process (.exec (Runtime/getRuntime) command)]
-      (.waitFor process)
-      (-> (.getInputStream process)
-          slurp
-          str/trim
-          io/file
-          .toPath))
+      (when (zero? (.waitFor process))
+        (-> (.getInputStream process)
+            slurp
+            str/trim
+            io/file
+            .toPath)))
     (catch Throwable _)))
 
 (defn process-root
